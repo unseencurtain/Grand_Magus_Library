@@ -54,7 +54,7 @@ export async function updateAuthor(id: number, data: AuthorData) {
   values.push(id);
 
   const updateAuthor = db.query(
-    `UPDATE authors SET ${fields.join(",")} WHERE id = ?`,
+    `UPDATE authors SET ${fields.join(", ")} WHERE id = ?`,
   );
 
   updateAuthor.run(...values);
