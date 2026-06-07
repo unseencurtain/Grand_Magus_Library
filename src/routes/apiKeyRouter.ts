@@ -37,7 +37,7 @@ apiKeyRoutes.post("/", zValidator("json", createKeySchema), async (c) => {
 apiKeyRoutes.delete("/:id", async (c) => {
   const { sub: userId } = c.var.jwtPayload;
   const id = parseInt(c.req.param("id"));
-  const data = await apik.deleteApiKeyById(id, userId);
+  const data = await apik.deleteApiKeyById(id, parseInt(userId));
   if (data.changes === 0) {
     return c.json({ error: "Not your id to delete" });
   }
