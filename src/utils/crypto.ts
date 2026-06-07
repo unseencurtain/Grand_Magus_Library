@@ -6,5 +6,5 @@ export async function verifyPassword(
   password: string,
   hash: string,
 ): Promise<Boolean> {
-  return Bun.password.verify(password, hash);
+  return await Bun.password.verify(password, hash);
 }

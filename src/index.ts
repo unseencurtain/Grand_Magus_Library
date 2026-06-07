@@ -1,10 +1,10 @@
 import { Hono } from "hono";
 import authorRoutes from "./routes/authorRouter";
-import authRouter from "./routes/authRouter";
+import authenticationRouter from "./routes/authenticationRouter";
 
 const app = new Hono();
 
-// app.route("/register", authRouter);
+app.route("/auth", authenticationRouter);
 app.route("/authors", authorRoutes);
 
 export default app;
