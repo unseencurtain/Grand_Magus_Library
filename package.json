@@ -3,7 +3,10 @@
   "allowImportingTsExtensions": true,
   "name": "grand-magus-library",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "db:user": "bun src/db/schema/checkSchema/userCheck.ts",
+    "db:author": "bun src/db/schema/checkSchema/authorCheck.ts",
+    "db:api": "bun src/db/schema/checkSchema/apiKeyCheck.ts"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.8.0",

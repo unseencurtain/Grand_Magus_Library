@@ -18,9 +18,9 @@ const loginSchema = z.object({
   password: z.string().min(1),
 });
 
-const authenticationRouter = new Hono();
+const authenticationRoutes = new Hono();
 
-authenticationRouter.post(
+authenticationRoutes.post(
   "/register",
   zValidator("json", registerSchema),
   async (c) => {
@@ -41,7 +41,7 @@ authenticationRouter.post(
   },
 );
 
-authenticationRouter.post(
+authenticationRoutes.post(
   "/login",
   zValidator("json", loginSchema),
   async (c) => {
@@ -61,10 +61,11 @@ authenticationRouter.post(
     const token = await sign(
       { exp: now + JWT_EXPIRATION_SECONDS, sub: id, email: email },
       JWT_SECRET,
+      "HS256",
     );
 
     return c.json({ token });
   },
 );
 
-export default authenticationRouter;
+export default authenticationRoutes;
